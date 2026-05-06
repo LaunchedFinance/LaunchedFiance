@@ -50,8 +50,8 @@ export default async function handler(req, res) {
     `;
 
     const { data: emailData, error } = await resend.emails.send({
-      from: 'Launched Finance <noreply@yourdomain.com>', // Replace with your verified domain
-      to: ['applications@launchedfinance.co.nz'], // Replace with your email
+      from: 'Launched Finance <noreply@launchedfinance.co.nz>', // Replace with your verified domain
+      to: ['info@launchedfinance.co.nz'], // Replace with your email
       subject: 'New Vehicle Finance Application',
       html: emailContent,
     });
