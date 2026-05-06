@@ -785,10 +785,15 @@ function doSubmit() {
     },
     body: JSON.stringify({ data: applicationData }),
   })
-  .then(response => response.json())
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('HTTP ' + response.status);
+    }
+    return response.json();
+  })
   .then(data => {
-    if (data.error) {
-      alert('Error submitting application: ' + data.error);
+    if (!data.ok) {
+      alert('Error submitting application: ' + (data.error || 'Unknown error'));
       return;
     }
     if (D.firstName) document.getElementById('confName').textContent = D.firstName;

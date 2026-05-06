@@ -9,7 +9,7 @@
     "start": "npx serve ."
   },
   "dependencies": {
-    "resend": "^3.2.0"
+    "resend": "latest"
   },
   "devDependencies": {},
   "keywords": ["finance", "vehicle", "application"],

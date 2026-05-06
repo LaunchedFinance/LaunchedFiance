@@ -52,18 +52,19 @@ export default async function handler(req, res) {
     const { data: emailData, error } = await resend.emails.send({
       from: 'Launched Finance <noreply@launchedfinance.co.nz>', // Replace with your verified domain
       to: ['info@launchedfinance.co.nz'], // Replace with your email
+      reply_to: data.fEmail,
       subject: 'New Vehicle Finance Application',
       html: emailContent,
     });
 
     if (error) {
       console.error('Resend error:', error);
-      return res.status(500).json({ error: 'Failed to send email' });
+      return res.status(500).json({ ok: false, error: 'Failed to send email' });
     }
 
-    res.status(200).json({ message: 'Application submitted successfully', emailId: emailData.id });
+    res.status(200).json({ ok: true });
   } catch (error) {
     console.error('Server error:', error);
-    return res.status(500).json({ error: 'Internal server error' });
+    return res.status(500).json({ ok: false, error: 'Internal server error' });
   }
 }
