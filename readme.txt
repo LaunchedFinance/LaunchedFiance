@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Launched Finance | Vehicle Finance NZ | launchedfinance.co.nz</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0f1e;color:#fff;min-height:100vh}
+.hdr{padding:1.25rem 2rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.08);background:#0a0f1e;position:sticky;top:0;z-index:100}
+.pw{flex:1;max-width:300px;margin:0 2rem}
+.pb{height:3px;background:rgba(255,255,255,0.12);border-radius:2px;overflow:hidden}
+.pf{height:100%;background:#00e5a0;border-radius:2px;transition:width 0.4s}
+.pt{font-size:12px;color:rgba(255,255,255,0.4);margin-top:6px}
+.scr{display:none;flex-direction:column;align-items:center;justify-content:center;min-height:calc(100vh - 70px);padding:2rem;text-align:center}
+.scr.on{display:flex}
+#s0{display:none;text-align:left;min-height:auto;padding:0}
+#s0.on{display:block}
+.ql{font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#00e5a0;margin-bottom:0.75rem}
+.qt{font-size:clamp(1.4rem,3.5vw,2.2rem);font-weight:700;max-width:600px;line-height:1.25;margin-bottom:0.5rem}
+.qs{font-size:14px;color:rgba(255,255,255,0.45);margin-bottom:2rem;max-width:500px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;max-width:640px;width:100%;margin-bottom:2rem}
+.card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:1.25rem 1rem;cursor:pointer;transition:all 0.2s;text-align:center}
+.card:hover{background:rgba(0,229,160,0.08);border-color:rgba(0,229,160,0.4)}
+.card.on{background:rgba(0,229,160,0.12);border-color:#00e5a0;color:#00e5a0}
+.ci{font-size:26px;margin-bottom:8px}
+.cl{font-size:13px;font-weight:500}
+.choices{display:flex;flex-direction:column;gap:10px;max-width:500px;width:100%;margin-bottom:2rem}
+.ch{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:0.9rem 1.25rem;cursor:pointer;transition:all 0.2s;text-align:left;font-size:15px;display:flex;align-items:center;gap:12px}
+.ch:hover{background:rgba(0,229,160,0.08);border-color:rgba(0,229,160,0.4)}
+.ch.on{background:rgba(0,229,160,0.12);border-color:#00e5a0;color:#00e5a0}
+.ck{width:18px;height:18px;border-radius:50%;border:1.5px solid rgba(255,255,255,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px}
+.ch.on .ck{background:#00e5a0;border-color:#00e5a0;color:#0a0f1e}
+.sw{width:100%;max-width:500px;margin-bottom:2rem}
+.sv{font-size:2.5rem;font-weight:800;color:#00e5a0;margin-bottom:1rem;letter-spacing:-0.03em}
+input[type=range]{-webkit-appearance:none;width:100%;height:4px;background:rgba(255,255,255,0.15);border-radius:2px;outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:#00e5a0;cursor:pointer;border:3px solid #0a0f1e;box-shadow:0 0 0 2px #00e5a0}
+.sr{display:flex;justify-content:space-between;font-size:12px;color:rgba(255,255,255,0.35);margin-top:8px}
+.fi{width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:1rem 1.25rem;font-size:1.1rem;color:#fff;outline:none;transition:border-color 0.2s;font-family:inherit}
+.fi:focus{border-color:#00e5a0}
+.fi::placeholder{color:rgba(255,255,255,0.25)}
+select.fi option{background:#0a0f1e}
+.iw{width:100%;max-width:480px;margin-bottom:2rem}
+.ir{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:480px;width:100%;margin-bottom:2rem}
+.bp{background:#00e5a0;color:#0a0f1e;border:none;padding:0.9rem 2.5rem;border-radius:50px;font-size:1rem;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.bp:hover{background:#00ffc4}
+.bs{background:transparent;color:rgba(255,255,255,0.5);border:1px solid rgba(255,255,255,0.15);padding:0.75rem 1.5rem;border-radius:50px;font-size:14px;cursor:pointer}
+.bs:hover{border-color:rgba(255,255,255,0.4);color:#fff}
+.br{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:0.5rem}
+.sb{background:rgba(0,229,160,0.07);border:1px solid rgba(0,229,160,0.15);border-radius:10px;padding:0.75rem 1.5rem;font-size:13px;color:#00e5a0;margin-bottom:2rem;display:inline-flex;align-items:center;gap:8px}
+.tip{position:relative;display:inline-flex;align-items:center;margin-left:6px;cursor:pointer}
+.tip-i{width:16px;height:16px;border-radius:50%;border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.4);font-size:10px;display:flex;align-items:center;justify-content:center;font-style:italic;font-weight:600}
+.tip-b{display:none;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:#1a2535;border:1px solid rgba(0,229,160,0.25);border-radius:10px;padding:10px 14px;width:220px;font-size:12px;color:rgba(255,255,255,0.7);line-height:1.6;z-index:99;text-align:left}
+.tip:hover .tip-b{display:block}
+.ubox{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,0.04);border:1.5px dashed rgba(255,255,255,0.15);border-radius:12px;padding:1rem 1.25rem;cursor:pointer;transition:all 0.2s;max-width:520px;width:100%}
+.ubox:hover{border-color:rgba(0,229,160,0.4)}
+.ubox.done{border-style:solid;border-color:#00e5a0;background:rgba(0,229,160,0.07)}
+.ui{font-size:22px;flex-shrink:0}
+.ut{font-size:14px;font-weight:600;color:#fff;margin-bottom:2px}
+.us{font-size:12px;color:rgba(255,255,255,0.4)}
+.ubox.done .us{color:#00e5a0}
+.utk{width:22px;height:22px;border-radius:50%;background:#00e5a0;color:#0a0f1e;display:none;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
+.ubox.done .utk{display:flex}
+.agrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;max-width:640px;width:100%;margin-bottom:1rem}
+.ac{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:1.1rem 1.25rem;cursor:pointer;transition:all 0.2s;text-align:left}
+.ac:hover{border-color:rgba(0,229,160,0.35)}
+.ac.on{background:rgba(0,229,160,0.1);border-color:#00e5a0}
+.an{font-size:14px;font-weight:600;color:#fff;margin-bottom:4px}
+.ac.on .an{color:#00e5a0}
+.as{font-size:12px;color:rgba(255,255,255,0.4);line-height:1.5}
+.rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;max-width:640px;width:100%;margin-bottom:1rem}
+.rc{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:1rem;cursor:pointer;position:relative;transition:all 0.2s}
+.rc:hover{border-color:rgba(0,229,160,0.4);background:rgba(0,229,160,0.05)}
+.re{position:absolute;top:7px;right:9px;font-size:10px;color:rgba(0,229,160,0.7)}
+.rl{font-size:11px;color:rgba(255,255,255,0.4);margin-bottom:4px;text-transform:uppercase;letter-spacing:0.05em}
+.rv{font-size:0.95rem;font-weight:600;color:#fff}
+.mh{font-size:clamp(3rem,8vw,5rem);font-weight:900;color:#00e5a0;letter-spacing:-0.04em;margin:0.5rem 0}
+.ml{font-size:14px;color:rgba(255,255,255,0.45);margin-bottom:1.5rem}
+.tcb{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:1rem 1.25rem;max-width:560px;width:100%;margin:1rem 0;text-align:left;font-size:11px;color:rgba(255,255,255,0.35);line-height:1.7}
+.ai{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;overflow:hidden;margin-bottom:8px}
+.ab{width:100%;background:transparent;border:none;padding:1rem 1.25rem;display:flex;justify-content:space-between;align-items:center;cursor:pointer;color:#fff;gap:1rem;font-family:inherit}
+.at{font-size:14px;font-weight:600;text-align:left}
+.aico{color:#00e5a0;font-size:18px;flex-shrink:0}
+.ad{display:none;padding:0 1.25rem 1rem;font-size:13px;color:rgba(255,255,255,0.55);line-height:1.7}
+/* Home */
+.hs{padding:3rem 2rem;border-bottom:1px solid rgba(255,255,255,0.06)}
+.hs.alt{background:#0d1526}
+.se{font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#00e5a0;margin-bottom:0.5rem}
+.sh{font-size:1.6rem;font-weight:700;margin-bottom:2rem;color:#fff}
+.sg{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1rem;max-width:800px;margin:0 auto;text-align:center}
+.sn{font-size:1.8rem;font-weight:900;color:#00e5a0}
+.sl{font-size:12px;color:rgba(255,255,255,0.45);margin-top:2px}
+.wg{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;max-width:800px}
+.wc{background:rgba(0,229,160,0.05);border:1px solid rgba(0,229,160,0.15);border-radius:14px;padding:1.25rem}
+.wi{font-size:20px;margin-bottom:8px}
+.wt{font-weight:600;color:#fff;margin-bottom:4px;font-size:14px}
+.wb{font-size:12px;color:rgba(255,255,255,0.45);line-height:1.6}
+.stg{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;max-width:800px}
+.sti{display:flex;gap:1rem;align-items:flex-start}
+.stnum{background:#00e5a0;color:#0a0f1e;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;flex-shrink:0}
+.stt{font-weight:600;color:#fff;margin-bottom:4px}
+.stb{font-size:13px;color:rgba(255,255,255,0.45);line-height:1.6}
+.teg{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;max-width:800px}
+.tec{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:1.25rem}
+.tes{color:#00e5a0;font-size:14px;margin-bottom:10px}
+.tet{font-size:13px;color:rgba(255,255,255,0.7);line-height:1.7;margin-bottom:12px}
+.tea{width:32px;height:32px;border-radius:50%;background:rgba(0,229,160,0.2);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#00e5a0}
+.cg{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;max-width:800px;margin-bottom:1.5rem}
+.ci2{display:flex;gap:12px;align-items:flex-start}
+.ftr{padding:2rem;border-top:1px solid rgba(255,255,255,0.06);background:#070c18}
+.fg{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1.5rem;max-width:800px;margin:0 auto}
+.badge{display:inline-flex;align-items:center;gap:6px;background:rgba(0,229,160,0.12);border:1px solid rgba(0,229,160,0.25);color:#00e5a0;font-size:12px;padding:4px 14px;border-radius:20px;margin-bottom:1.5rem}
+.dep-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:0}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <svg width="150" height="38" viewBox="0 0 680 200" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <clipPath id="c1"><rect x="60" y="20" width="44" height="155"/></clipPath>
+      <clipPath id="c2"><rect x="120" y="20" width="44" height="155"/></clipPath>
+      <clipPath id="c3"><rect x="180" y="20" width="44" height="155"/></clipPath>
+    </defs>
+    <rect x="60" y="133" width="44" height="39" rx="4" fill="#0d2018" stroke="#00e5a0" stroke-width="0.5" opacity="0.6"/>
+    <rect x="61" y="162" width="42" height="9" rx="2" fill="#00c47a" clip-path="url(#c1)"/>
+    <rect x="120" y="108" width="44" height="64" rx="4" fill="#0d2018" stroke="#00e5a0" stroke-width="0.5" opacity="0.7"/>
+    <rect x="121" y="140" width="42" height="31" rx="2" fill="#00d488" clip-path="url(#c2)"/>
+    <rect x="180" y="75" width="44" height="97" rx="4" fill="#0d2018" stroke="#00e5a0" stroke-width="0.5" opacity="0.9"/>
+    <rect x="181" y="98" width="42" height="73" rx="2" fill="#00dc90" clip-path="url(#c3)"/>
+    <rect x="240" y="40" width="44" height="132" rx="4" fill="#00e5a0"/>
+    <path d="M262 37 Q276 18 288 8" fill="none" stroke="#00e5a0" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.7"/>
+    <g transform="translate(296,4) rotate(-38)">
+      <rect x="-14" y="-6" width="28" height="11" rx="4" fill="#00e5a0"/>
+      <rect x="-6" y="-12" width="15" height="8" rx="3" fill="#00e5a0"/>
+      <rect x="-4" y="-11" width="5" height="6" rx="1" fill="#0a0f1e" opacity="0.7"/>
+      <rect x="2" y="-11" width="5" height="6" rx="1" fill="#0a0f1e" opacity="0.7"/>
+      <circle cx="-7" cy="6" r="3" fill="#0a0f1e" stroke="#00e5a0" stroke-width="1"/>
+      <circle cx="7" cy="6" r="3" fill="#0a0f1e" stroke="#00e5a0" stroke-width="1.2"/>
+      <polygon points="14,2.5 22,0 14,-2.5" fill="#fff" opacity="0.95"/>
+      <circle cx="-12" cy="0" r="2" fill="#fff" opacity="0.9"/>
+    </g>
+    <line x1="48" y1="173" x2="310" y2="173" stroke="#00e5a0" stroke-width="1" opacity="0.3"/>
+    <text x="345" y="120" font-family="-apple-system,sans-serif" font-size="52" font-weight="900" fill="#fff" letter-spacing="-2">LAUNCH</text>
+    <text x="348" y="148" font-family="-apple-system,sans-serif" font-size="18" font-weight="400" fill="#00e5a0" letter-spacing="5">FINANCE BROKERS</text>
+  </svg>
+  <div class="pw"><div class="pb"><div class="pf" id="pf" style="width:0%"></div></div><div class="pt" id="pt"></div></div>
+  <div style="width:80px"></div>
+</header>
+
+<!-- S0 HOME -->
+<div class="scr" id="s0">
+  <section class="hs" style="text-align:center">
+    <div class="badge">NZ Vehicle Finance Brokers</div>
+    <h1 style="font-size:clamp(2rem,5vw,3.5rem);font-weight:800;line-height:1.1;margin-bottom:1rem">Get behind the wheel <span style="color:#00e5a0">faster.</span></h1>
+    <p style="font-size:1.05rem;color:rgba(255,255,255,0.55);max-width:480px;line-height:1.6;margin:0 auto 1.5rem">We shop NZ's top lenders for the best rate, then negotiate directly with dealers to get you the best deal. All you have to do is drive away.</p>
+    <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:10px 18px;margin-bottom:2rem">
+      <div style="font-size:18px">&#9201;</div>
+      <div style="text-align:left"><div style="font-size:13px;font-weight:600">Takes around 5 minutes to complete</div><div style="font-size:11px;color:rgba(255,255,255,0.4)">Decision in as little as 2 business hours</div></div>
+    </div><br>
+    <button class="bp" style="font-size:1.1rem;padding:1rem 3rem" onclick="goTo(1)">Apply now &#8594;</button>
+    <p style="font-size:12px;color:rgba(255,255,255,0.25);margin-top:1rem">Responsible lending criteria apply. Rates from 8.45% to 29.95% p.a.</p>
+  </section>
+  <section class="hs alt" style="padding:1.5rem 2rem">
+    <div class="sg"><div><div class="sn">$75K</div><div class="sl">Max loan</div></div><div><div class="sn">8.45%</div><div class="sl">Rates from p.a.</div></div><div><div class="sn">2 hrs</div><div class="sl">Decision time</div></div><div><div class="sn">5 min</div><div class="sl">To apply</div></div></div>
+  </section>
+  <section class="hs" style="max-width:900px;margin:0 auto;width:100%">
+    <div class="se">How it works</div><div class="sh">Three simple steps</div>
+    <div class="stg">
+      <div class="sti"><div class="stnum">1</div><div><div class="stt">Apply online in 5 minutes</div><div class="stb">Complete our quick online form. No paperwork, no branch visit needed.</div></div></div>
+      <div class="sti"><div class="stnum">2</div><div><div class="stt">We find the rate and negotiate</div><div class="stb">We shop multiple lenders and go to dealers to negotiate the best purchase price on your behalf.</div></div></div>
+      <div class="sti"><div class="stnum">3</div><div><div class="stt">Pick up your keys</div><div class="stb">We handle the paperwork. Once approved and signed, funds are paid to the dealer within one business day.</div></div></div>
+    </div>
+  </section>
+  <section class="hs alt" style="max-width:900px;margin:0 auto;width:100%">
+    <div class="se">Why Launch Finance</div><div class="sh">We work for you, not the banks</div>
+    <div class="wg">
+      <div class="wc"><div class="wi">&#129309;</div><div class="wt">We negotiate for you</div><div class="wb">We go into bat with dealers on your behalf, negotiating the best possible purchase price and deal terms.</div></div>
+      <div class="wc"><div class="wi">&#128269;</div><div class="wt">We shop the market</div><div class="wb">We compare multiple NZ lenders to find the most competitive rate. One application, multiple options.</div></div>
+      <div class="wc"><div class="wi">&#128172;</div><div class="wt">End-to-end support</div><div class="wb">Your dedicated adviser manages the entire process from application through to the handover of your keys.</div></div>
+      <div class="wc"><div class="wi">&#127970;</div><div class="wt">All credit situations</div><div class="wb">We consider all credit histories including defaults and bad credit. We find solutions where banks say no.</div></div>
+      <div class="wc"><div class="wi">&#128203;</div><div class="wt">No deposit options</div><div class="wb">No deposit? No problem. We offer $0 deposit finance options subject to responsible lending criteria.</div></div>
+      <div class="wc"><div class="wi">&#9889;</div><div class="wt">Fast settlement</div><div class="wb">Approved and signed? Funds are typically paid to the dealer within one business day.</div></div>
+    </div>
+  </section>
+  <section class="hs" style="max-width:900px;margin:0 auto;width:100%">
+    <div class="se">Customer stories</div><div class="sh">Kiwis who got on the road</div>
+    <div class="teg">
+      <div class="tec"><div class="tes">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="tet">"I had defaults on my credit file and thought no one would help. Launch Finance found me a great rate and had me approved the same afternoon."</p><div style="display:flex;align-items:center;gap:10px"><div class="tea">JT</div><div><div style="font-size:13px;font-weight:600">Jason T.</div><div style="font-size:11px;color:rgba(255,255,255,0.35)">Auckland &middot; Ute finance</div></div></div></div>
+      <div class="tec"><div class="tes">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="tet">"Super easy process. Filled in the form on my lunch break, got a call that afternoon, and picked up my SUV two days later."</p><div style="display:flex;align-items:center;gap:10px"><div class="tea">SR</div><div><div style="font-size:13px;font-weight:600">Sarah R.</div><div style="font-size:11px;color:rgba(255,255,255,0.35)">Wellington &middot; SUV finance</div></div></div></div>
+      <div class="tec"><div class="tes">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="tet">"As a self-employed tradie the banks always knocked me back. These guys found a lender who understood my situation."</p><div style="display:flex;align-items:center;gap:10px"><div class="tea">MK</div><div><div style="font-size:13px;font-weight:600">Mike K.</div><div style="font-size:11px;color:rgba(255,255,255,0.35)">Christchurch &middot; Car finance</div></div></div></div>
+    </div>
+    <p style="font-size:11px;color:rgba(255,255,255,0.25);margin-top:1rem">* Testimonials are illustrative. Individual results may vary.</p>
+  </section>
+  <section class="hs alt" style="max-width:900px;margin:0 auto;width:100%">
+    <div class="se">FAQs</div><div class="sh">Common questions</div>
+    <div id="faqList"></div>
+  </section>
+  <section class="hs" style="max-width:900px;margin:0 auto;width:100%">
+    <div class="se">Legal</div><div class="sh">Terms and conditions</div>
+    <div id="tcList"></div>
+  </section>
+  <section class="hs alt" style="text-align:center">
+    <h2 style="font-size:1.8rem;font-weight:800;margin-bottom:0.75rem">Ready to get on the road?</h2>
+    <p style="font-size:14px;color:rgba(255,255,255,0.45);margin-bottom:2rem;line-height:1.6">Apply in 5 minutes. No impact on your credit score to start.</p>
+    <button class="bp" style="font-size:1.1rem;padding:1rem 3rem" onclick="goTo(1)">Start my application &#8594;</button>
+  </section>
+  <footer class="ftr">
+    <div class="fg">
+      <div><div style="font-size:14px;font-weight:700;margin-bottom:8px">Launch Finance Brokers</div><div style="font-size:12px;color:rgba(255,255,255,0.35);line-height:1.8">info@launchedfinance.co.nz<br>021 300 279</div></div>
+      <div><div style="font-size:12px;font-weight:600;color:rgba(255,255,255,0.5);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.05em">Services</div><div style="font-size:12px;color:rgba(255,255,255,0.35);line-height:2">Car Loans<br>SUV and Ute Finance<br>Motorbike Finance<br>No Deposit Finance</div></div>
+      <div><div style="font-size:12px;font-weight:600;color:rgba(255,255,255,0.5);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.05em">Legal</div><div style="font-size:12px;color:rgba(255,255,255,0.35);line-height:2">Privacy Policy<br>Terms and Conditions<br>Responsible Lending<br>CCCFA Disclosure</div></div>
+    </div>
+    <div style="max-width:800px;margin:1.5rem auto 0;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.06);font-size:11px;color:rgba(255,255,255,0.2);line-height:1.8">2025 Launch Finance Brokers. Credit broker, not a lender. Lending subject to approval. Rates 8.45% to 29.95% p.a.</div>
+  </footer>
+</div>
+
+<!-- S1 Vehicle type -->
+<div class="scr" id="s1">
+  <div class="ql">Section 1 of 5 &mdash; Loan details</div>
+  <h2 class="qt">What type of vehicle are you financing?</h2>
+  <div class="cards">
+    <div class="card" onclick="pick('vehicleType','Car',this)"><div class="ci">&#128663;</div><div class="cl">Car</div></div>
+    <div class="card" onclick="pick('vehicleType','SUV',this)"><div class="ci">&#128665;</div><div class="cl">SUV</div></div>
+    <div class="card" onclick="pick('vehicleType','Ute / Truck',this)"><div class="ci">&#128699;</div><div class="cl">Ute / Truck</div></div>
+    <div class="card" onclick="pick('vehicleType','Motorbike',this)"><div class="ci">&#128653;</div><div class="cl">Motorbike</div></div>
+    <div class="card" onclick="pick('vehicleType','Caravan / Boat',this)"><div class="ci">&#128656;</div><div class="cl">Caravan / Boat</div></div>
+  </div>
+  <div class="br"><button class="bs" onclick="goTo(0)">&#8592; Back</button><button class="bp" onclick="req(1,2,'vehicleType')">Continue &#8594;</button></div>
+</div>
+
+<!-- S2 Buying from -->
+<div class="scr" id="s2">
+  <div class="ql">Section 1 of 5 &mdash; Loan details</div>
+  <h2 class="qt">Where are you buying from?</h2>
+  <div class="choices">
+    <div class="ch" onclick="pick('buyFrom','Motor dealer',this)"><div class="ck">&#10003;</div>Motor dealer</div>
+    <div class="ch" onclick="pick('buyFrom','Private seller',this)"><div class="ck">&#10003;</div>Private seller</div>
+    <div class="ch" onclick="pick('buyFrom','Auction',this)"><div class="ck">&#10003;</div>Auction (e.g. Turners)</div>
+    <div class="ch" onclick="pick('buyFrom','Trade Me',this)"><div class="ck">&#10003;</div>Trade Me</div>
+    <div class="ch" onclick="pick('buyFrom','Not yet decided',this)"><div class="ck">&#10003;</div>Haven't chosen yet &mdash; pre-approval</div>
+  </div>
+  <div class="br"><button class="bs" onclick="goTo(1)">&#8592; Back</button><button class="bp" onclick="req(2,3,'buyFrom')">Continue &#8594;</button></div>
+</div>
+
+<!-- S3 Price -->
+<div class="scr" id="s3">
+  <div class="ql">Section 1 of 5 &mdash; Loan details</div>
+  <h2 class="qt">What is the purchase price?</h2>
+  <div class="sw">
+    <div class="sv" id="priceVal">$25,000</div>
+    <input type="range" min="1000" max="75000" step="500" value="25000" id="priceSlider" oninput="slUpd('price')">
+    <div class="sr"><span>$1,000</span><span>$75,000</span></div>
+  </div>
+  <div class="br"><button class="bs" onclick="goTo(2)">&#8592; Back</button><button class="bp" onclick="goTo(4)">Continue &#8594;</button></div>
+</div>
+
+<!-- S4 Deposit -->
+<div class="scr" id="s4">
+  <div class="ql">Section 1 of 5 &mdash; Loan details</div>
+  <h2 class="qt">How much deposit do you have?</h2>
+  <p class="qs">No deposit? No problem &mdash; enter $0.</p>
+  <div class="sw">
+    <div style="display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:1rem">
+      <span style="font-size:2rem;font-weight:800;color:#00e5a0">$</span>
+      <input type="number" id="depInput" min="0" value="5000" style="background:transparent;border:none;border-bottom:2px solid #00e5a0;color:#00e5a0;font-size:2rem;font-weight:800;width:130px;outline:none;font-family:inherit" oninput="depTyped()">
+    </div>
+    <input type="range" min="0" max="30000" step="500" value="5000" id="depSlider" oninput="depSlid()">
+    <div class="sr"><span>$0</span><span>$30,000+</span></div>
+  </div>
+  <div class="br"><button class="bs" onclick="goTo(3)">&#8592; Back</button><button class="bp" onclick="saveDep()">Continue &#8594;</button></div>
+</div>
+
+<!-- S5 Term -->
+<div class="scr" id="s5">
+  <div class="ql">Section 1 of 5 &mdash; Loan details</div>
+  <h2 class="qt">What loan term suits you?</h2>
+  <div class="cards">
+    <div class="card" onclick="pick('loanTerm','12 months',this)"><div class="ci" style="font-size:20px;font-weight:700">12</div><div class="cl">months</div></div>
+    <div class="card" onclick="pick('loanTerm','24 months',this)"><div class="ci" style="font-size:20px;font-weight:700">24</div><div class="cl">months</div></div>
+    <div class="card" onclick="pick('loanTerm','36 months',this)"><div class="ci" style="font-size:20px;font-weight:700">36</div><div class="cl">months</div></div>
+    <div class="card" onclick="pick('loanTerm','48 months',this)"><div class="ci" style="font-size:20px;font-weight:700">48</div><div class="cl">months</div></div>
+    <div class="card" onclick="pick('loanTerm','60 months',this)"><div class="ci" style="font-size:20px;font-weight:700">60</div><div class="cl">months</div></div>
+  </div>
+  <div class="br"><button class="bs" onclick="goTo(4)">&#8592; Back</button><button class="bp" onclick="req(5,6,'loanTerm')">Continue &#8594;</button></div>
+</div>
+
+<!-- S6 Frequency -->
+<div class="scr" id="s6">
+  <div class="ql">Section 1 of 5 &mdash; Loan details</div>
+  <h2 class="qt">How often would you like to repay?</h2>
+  <div class="choices">
+    <div class="ch" onclick="pick('repayFreq','Weekly',this)"><div class="ck">&#10003;</div>Weekly</div>
+    <div class="ch" onclick="pick('repayFreq','Fortnightly',this)"><div class="ck">&#10003;</div>Fortnightly</div>
+    <div class="ch" onclick="pick('repayFreq','Monthly',this)"><div class="ck">&#10003;</div>Monthly</div>
+  </div>
+  <div class="br"><button class="bs" onclick="goTo(5)">&#8592; Back</button><button class="bp" onclick="req(6,7,'repayFreq')">Continue &#8594;</button></div>
+</div>
+
+<!-- S7 Name -->
+<div class="scr" id="s7">
+  <div class="sb">&#128203; Section 2 of 5 &mdash; Personal details</div>
+  <h2 class="qt">What is your full legal name?</h2>
+  <p class="qs">As it appears on your driver's licence or passport.</p>
+  <div style="max-width:480px;width:100%;display:flex;flex-direction:column;gap:10px;margin-bottom:2rem">
+    <select class="fi" id="ftitle"><option value="">Title (optional)</option><option>Mr</option><option>Mrs</option><option>Ms</option><option>Miss</option><option>Dr</option><option>Mx</option></select>
+    <div class="ir" style="margin-bottom:0">
+      <input class="fi" id="fFirst" placeholder="First name" type="text">
+      <input class="fi" id="fLast" placeholder="Last name" type="text">
+    </div>
+  </div>
+  <div class="br"><button class="bs" onclick="goTo(6)">&#8592; Back</button><button class="bp" onclick="saveName()">Continue &#8594;</button></div>
+</div>
+
+<!-- S8 DOB -->
+<div class="scr" id="s8">
+  <div class="ql">Section 2 of 5 &mdash; Personal details</div>
+  <h2 class="qt">What is your date of birth?</h2>
+  <div class="iw"><input class="fi" id="fDob" type="date"></div>
+  <div class="br"><button class="bs" onclick="goTo(7)">&#8592; Back</button><button class="bp" onclick="saveInp(8,9,'fDob')">Continue &#8594;</button></div>
+</div>
+
+<!-- S9 Email -->
+<div class="scr" id="s9">
+  <div class="ql">Section 2 of 5 &mdash; Personal details</div>
+  <h2 class="qt">What is your email address?</h2>
+  <div class="iw"><input class="fi" id="fEmail" placeholder="you@example.com" type="email"></div>
+  <div class="br"><button class="bs" onclick="goTo(😎">&#8592; Back</button><button class="bp" onclick="saveInp(9,10,'fEmail')">Continue &#8594;</button></div>
+</div>
+
+<!-- S10 Mobile -->
+<div class="scr" id="s10">
+  <div class="ql">Section 2 of 5 &mdash; Personal details</div>
+  <h2 class="qt">What is your mobile number?</h2>
+  <div class="iw"><input class="fi" id="fMobile" placeholder="021 000 0000" type="tel"></div>
+  <div class="br"><button class="bs" onclick="goTo(9)">&#8592; Back</button><button class="bp" onclick="saveInp(10,11,'fMobile')">Continue &#8594;</button></div>
+</div>
+
+<!-- S11 Address -->
+<div class="scr" id="s11">
+  <div class="ql">Section 2 of 5 &mdash; Personal details</div>
+  <h2 class="qt">What is your current residential address?</h2>
+  <div class="iw" style="display:flex;flex-direction:column;gap:10px">
+    <input class="fi" id="fStreet" placeholder="Street address" type="text">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <input class="fi" id="fSuburb" placeholder="Suburb" type="text">
+      <input class="fi" id="fCity" placeholder="City" type="text">
+    </div>
+  </div>
+  <div class="br" style="margin-top:1.5rem"><button class="bs" onclick="goTo(10)">&#8592; Back</button><button class="bp" onclick="saveAddr()">Continue &#8594;</button></div>
+</div>
+
+<!-- S12 Household -->
+<div class="scr" id="s12">
+  <div class="ql">Section 2 of 5 &mdash; Personal details</div>
+  <h2 class="qt">A few more household details</h2>
+  <p class="qs">Required for your affordability assessment under the CCCFA.</p>
+  <div style="max-width:500px;width:100%;display:flex;flex-direction:column;gap:16px;margin-bottom:1.5rem;text-align:left">
+    <div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:6px">Residential status</div>
+      <div class="choices" style="margin-bottom:0" id="gTenure">
+        <div class="ch" onclick="pick('ownRent','Own',this,'gTenure')"><div class="ck">&#10003;</div>I own this property</div>
+        <div class="ch" onclick="pick('ownRent','Renting',this,'gTenure')"><div class="ck">&#10003;</div>Renting</div>
+        <div class="ch" onclick="pick('ownRent','Boarding',this,'gTenure')"><div class="ck">&#10003;</div>Boarding / living with family</div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:6px">Time at this address</div>
+      <div class="choices" style="margin-bottom:0" id="gDur">
+        <div class="ch" onclick="pick('resideDur','Less than 1 year',this,'gDur')"><div class="ck">&#10003;</div>Less than 1 year</div>
+        <div class="ch" onclick="pick('resideDur','1 to 3 years',this,'gDur')"><div class="ck">&#10003;</div>1 to 3 years</div>
+        <div class="ch" onclick="pick('resideDur','3 or more years',this,'gDur')"><div class="ck">&#10003;</div>3 or more years</div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:6px">Relationship status</div>
+      <div class="choices" style="margin-bottom:0" id="gRel">
+        <div class="ch" onclick="pick('relStatus','Single',this,'gRel')"><div class="ck">&#10003;</div>Single</div>
+        <div class="ch" onclick="pick('relStatus','Married or de facto',this,'gRel')"><div class="ck">&#10003;</div>Married / de facto</div>
+        <div class="ch" onclick="pick('relStatus','Separated or divorced',this,'gRel')"><div class="ck">&#10003;</div>Separated / divorced</div>
+        <div class="ch" onclick="pick('relStatus','Widowed',this,'gRel')"><div class="ck">&#10003;</div>Widowed</div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:6px;display:flex;align-items:center;gap:6px">
+        Number of dependants
+        <span class="tip"><span class="tip-i">i</span><span class="tip-b">People who rely on your income such as children. Used to calculate living expenses as required under the CCCFA.</span></span>
+      </div>
+      <div class="dep-row" id="gDep">
+        <div class="card" style="min-width:55px;padding:0.7rem" onclick="pick('dependants','0',this,'gDep')"><div class="cl" style="font-size:18px;font-weight:700">0</div></div>
+        <div class="card" style="min-width:55px;padding:0.7rem" onclick="pick('dependants','1',this,'gDep')"><div class="cl" style="font-size:18px;font-weight:700">1</div></div>
+        <div class="card" style="min-width:55px;padding:0.7rem" onclick="pick('dependants','2',this,'gDep')"><div class="cl" style="font-size:18px;font-weight:700">2</div></div>
+        <div class="card" style="min-width:55px;padding:0.7rem" onclick="pick('dependants','3',this,'gDep')"><div class="cl" style="font-size:18px;font-weight:700">3</div></div>
+        <div class="card" style="min-width:55px;padding:0.7rem" onclick="pick('dependants','4',this,'gDep')"><div class="cl" style="font-size:18px;font-weight:700">4</div></div>
+        <div class="card" style="min-width:55px;padding:0.7rem" onclick="pick('dependants','5+',this,'gDep')"><div class="cl" style="font-size:16px;font-weight:700">5+</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="br"><button class="bs" onclick="goTo(11)">&#8592; Back</button><button class="bp" onclick="req(12,13,'ownRent')">Continue &#8594;</button></div>
+</div>
+
+<!-- S13 Citizenship -->
+<div class="scr" id="s13">
+  <div class="ql">Section 2 of 5 &mdash; Personal details</div>
+  <h2 class="qt">Are you a NZ citizen or permanent resident?</h2>
+  <div class="choices">
+    <div class="ch" onclick="pick('citizen','NZ citizen',this)"><div class="ck">&#10003;</div>Yes &mdash; NZ citizen</div>
+    <div class="ch" onclick="pick('citizen','Permanent resident',this)"><div class="ck">&#10003;</div>Yes &mdash; permanent resident</div>
+    <div class="ch" onclick="pick('citizen','Work or student visa',this)"><div class="ck">&#10003;</div>No &mdash; work / student visa</div>
+  </div>
+  <div class="br"><button class="bs" onclick="goTo(12)">&#8592; Back</button><button class="bp" onclick="req(13,14,'citizen')">Continue &#8594;</button></div>
+</div>
+
+<!-- S14 Employment -->
+<div class="scr" id="s14">
+  <div class="sb">&#128188; Section 3 of 5 &mdash; Employment and income</div>
+  <h2 class="qt">What is your employment status?</h2>
+  <div class="choices">
+    <div class="ch" onclick="pick('employ','Full-time employed',this)"><div class="ck">&#10003;</div>Full-time employed</div>
+    <div class="ch" onclick="pick('employ','Part-time employed',this)"><div class="ck">&#10003;</div>Part-time employed</div>
+    <div class="ch" onclick="pick('employ','Self-employed or contractor',this)"><div class="ck">&#10003;</div>Self-employed / contractor</div>
+    <div class="ch" onclick="pick('employ','Beneficiary',this)"><div class="ck">&#10003;</div>Beneficiary</div>
+    <div class="ch" onclick="pick('employ','Student',this)"><div class="ck">&#10003;</div>Student</div>
+    <div class="ch" onclick="pick('employ','Retired',this)"><div class="ck">&#10003;</div>Retired</div>
+  </div>
+  <div class="br"><button class="bs" onclick="goTo(13)">&#8592; Back</button><button class="bp" onclick="req(14,15,'employ')">Continue &#8594;</button></div>
+</div>
+
+<!-- S15 Employer -->
+<div class="scr" id="s15">
+  <div class="ql">Section 3 of 5 &mdash; Employment and income</div>
+  <h2 class="qt">What is your employer's name?</h2>
+  <p class="qs">If self-employed, enter your business name.</p>
+  <div class="iw"><input class="fi" id="fEmployer" placeholder="Employer or business name" type="text"></div>
+  <div class="br"><button class="bs" onclick="goTo(14)">&#8592; Back</button><button class="bp" onclick="saveInp(15,16,'fEmployer')">Continue &#8594;</button></div>
+</div>
+
+<!-- S16 Time in role -->
+<div class="scr" id="s16">
+  <div class="ql">Section 3 of 5 &mdash; Employment and income</div>
+  <h2 class="qt">How long have you been in this role?</h2>
+  <div class="choices">
+    <div class="ch" onclick="pick('roleTime','Less than 6 months',this)"><div class="ck">&#10003;</div>Less than 6 months</div>
+    <div class="ch" onclick="pick('roleTime','6 to 12 months',this)"><div class="ck">&#10003;</div>6 to 12 months</div>
+    <div class="ch" onclick="pick('roleTime','1 to 2 years',this)"><div class="ck">&#10003;</div>1 to 2 years</div>
+    <div class="ch" onclick="pick('roleTime','2 or more years',this)"><div class="ck">&#10003;</div>2 or more years</div>
+  </div>
+  <div class="br"><button class="bs" onclick="goTo(15)">&#8592; Back</button><button class="bp" onclick="req(16,17,'roleTime')">Continue &#8594;</button></div>
+</div>
+
+<!-- S17 Income -->
+<div class="scr" id="s17">
+  <div class="ql">Section 3 of 5 &mdash; Employment and income</div>
+  <h2 class="qt">What is your gross annual income?</h2>
+  <div class="sw">
+    <div class="sv" id="incomeVal">$65,000</div>
+    <input type="range" min="10000" max="250000" step="1000" value="65000" id="incomeSlider" oninput="slUpd('income')">
+    <div class="sr"><span>$10,000</span><span>$250,000+</span></div>
+  </div>
+  <div class="br"><button class="bs" onclick="goTo(16)">&#8592; Back</button><button class="bp" onclick="goTo(18)">Continue &#8594;</button></div>
+</div>
+
+<!-- S18 Expenses -->
+<div class="scr" id="s18">
+  <div class="ql">Section 3 of 5 &mdash; Employment and income</div>
+  <h2 class="qt">What are your regular monthly expenses?</h2>
+  <p class="qs">Include rent, loans, credit cards, childcare and other commitments.</p>
+  <div class="sw">
+    <div class="sv" id="expVal">$2,000 / mo</div>
+    <input type="range" min="0" max="10000" step="100" value="2000" id="expSlider" oninput="slUpd('exp')">
+    <div class="sr"><span>$0</span><span>$10,000</span></div>
+  </div>
+  <div class="br"><button class="bs" onclick="goTo(17)">&#8592; Back</button><button class="bp" onclick="goTo(19)">Continue &#8594;</button></div>
+</div>
+
+<!-- S19 Licence -->
+<div class="scr" id="s19">
+  <div class="sb">&#128274; Section 4 of 5 &mdash; Identity and credit</div>
+  <h2 class="qt" style="display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap">
+    Driver's licence number
+    <span class="tip"><span class="tip-i">i</span><span class="tip-b">Used to verify your identity as required under the CCCFA. Encrypted and never shared without your consent.</span></span>
+  </h2>
+  <p class="qs">Used for identity verification. Your data is encrypted and secure.</p>
+  <div class="iw"><input class="fi" id="fLicence" placeholder="e.g. AB123456" type="text" maxlength="8"></div>
+  <div class="br"><button class="bs" onclick="goTo(18)">&#8592; Back</button><button class="bp" onclick="saveInp(19,20,'fLicence')">Continue &#8594;</button></div>
+</div>
+
+<!-- S20 Existing loans -->
+<div class="scr" id="s20">
+  <div class="ql">Section 4 of 5 &mdash; Identity and credit</div>
+  <h2 class="qt">Do you have existing loans or credit cards?</h2>
+  <div class="choices">
+    <div class="ch" onclick="pick('existLoans','None',this)"><div class="ck">&#10003;</div>No existing loans or credit cards</div>
+    <div class="ch" onclick="pick('existLoans','Under $10,000',this)"><div class="ck">&#10003;</div>Yes &mdash; under $10,000 total</div>
+    <div class="ch" onclick="pick('existLoans','$10,000 to $30,000',this)"><div class="ck">&#10003;</div>Yes &mdash; $10,000 to $30,000 total</div>
+    <div class="ch" onclick="pick('existLoans','Over $30,000',this)"><div class="ck">&#10003;</div>Yes &mdash; over $30,000 total</div>
+  </div>
+  <div class="br"><button class="bs" onclick="goTo(19)">&#8592; Back</button><button class="bp" onclick="req(20,21,'existLoans')">Continue &#8594;</button></div>
+</div>
+
+<!-- S21 Credit issues -->
+<div class="scr" id="s21">
+  <div class="ql">Section 4 of 5 &mdash; Identity and credit</div>
+  <h2 class="qt" style="display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap">
+    Any credit issues in the past 5 years?
+    <span class="tip"><span class="tip-i">i</span><span class="tip-b">Being upfront helps us match you to the right lender. We work with specialists in all credit situations.</span></span>
+  </h2>
+  <p class="qs">We consider all situations. Being upfront helps us find the best option for you.</p>
+  <div class="choices">
+    <div class="ch" onclick="pick('creditIssues','No issues',this)"><div class="ck">&#10003;</div>No issues</div>
+    <div class="ch" onclick="pick('creditIssues','Missed payments or arrears',this)"><div class="ck">&#10003;</div>Missed payments / arrears</div>
+    <div class="ch" onclick="pick('creditIssues','Defaults',this)"><div class="ck">&#10003;</div>Defaults listed on credit file</div>
+    <div class="ch" onclick="pick('creditIssues','Bankruptcy or insolvency',this)"><div class="ck">&#10003;</div>Previous bankruptcy or insolvency</div>
+  </div>
+  <div class="br"><button class="bs" onclick="goTo(20)">&#8592; Back</button><button class="bp" onclick="req(21,22,'creditIssues')">Continue &#8594;</button></div>
+</div>
+
+<!-- S22 Documents -->
+<div class="scr" id="s22">
+  <div class="sb">&#128206; Section 5 of 5 &mdash; Documents and add-ons</div>
+  <h2 class="qt">Upload your supporting documents</h2>
+  <p class="qs">Upload now to speed up approval, or skip and your adviser will follow up.</p>
+  <div style="display:flex;flex-direction:column;gap:12px;width:100%;align-items:center;margin-bottom:1.5rem">
+    <div class="ubox" onclick="document.getElementById('uLicF').click()">
+      <input type="file" id="uLicF" accept="image/*,.pdf" style="display:none" onchange="fileUp('uLicF','uLicF-l','uLicF-t')">
+      <div class="ui">&#128274;</div><div style="flex:1;text-align:left"><div class="ut">Driver's licence &mdash; front</div><div class="us" id="uLicF-l">JPG, PNG or PDF</div></div><div class="utk" id="uLicF-t">&#10003;</div>
+    </div>
+    <div class="ubox" onclick="document.getElementById('uLicB').click()">
+      <input type="file" id="uLicB" accept="image/*,.pdf" style="display:none" onchange="fileUp('uLicB','uLicB-l','uLicB-t')">
+      <div class="ui">&#128274;</div><div style="flex:1;text-align:left"><div class="ut">Driver's licence &mdash; back</div><div class="us" id="uLicB-l">JPG, PNG or PDF</div></div><div class="utk" id="uLicB-t">&#10003;</div>
+    </div>
+    <div class="ubox" onclick="document.getElementById('uP1').click()">
+      <input type="file" id="uP1" accept="image/*,.pdf" style="display:none" onchange="fileUp('uP1','uP1-l','uP1-t')">
+      <div class="ui">&#128196;</div><div style="flex:1;text-align:left"><div class="ut">Payslip 1 &mdash; most recent</div><div class="us" id="uP1-l">JPG, PNG or PDF</div></div><div class="utk" id="uP1-t">&#10003;</div>
+    </div>
+    <div class="ubox" onclick="document.getElementById('uP2').click()">
+      <input type="file" id="uP2" accept="image/*,.pdf" style="display:none" onchange="fileUp('uP2','uP2-l','uP2-t')">
+      <div class="ui">&#128196;</div><div style="flex:1;text-align:left"><div class="ut">Payslip 2</div><div class="us" id="uP2-l">JPG, PNG or PDF</div></div><div class="utk" id="uP2-t">&#10003;</div>
+    </div>
+    <div class="ubox" onclick="document.getElementById('uP3').click()">
+      <input type="file" id="uP3" accept="image/*,.pdf" style="display:none" onchange="fileUp('uP3','uP3-l','uP3-t')">
+      <div class="ui">&#128196;</div><div style="flex:1;text-align:left"><div class="ut">Payslip 3 &mdash; oldest of three</div><div class="us" id="uP3-l">JPG, PNG or PDF</div></div><div class="utk" id="uP3-t">&#10003;</div>
+    </div>
+  </div>
+  <p style="font-size:11px;color:rgba(255,255,255,0.28);max-width:480px;line-height:1.7;margin-bottom:1.5rem">All files are encrypted in transit and used solely for identity verification and income assessment as required under the CCCFA.</p>
+  <div class="br">
+    <button class="bs" onclick="goTo(21)">&#8592; Back</button>
+    <button class="bp" onclick="goTo(23)">Continue &#8594;</button>
+  </div>
+  <button onclick="goTo(23)" style="background:none;border:none;color:rgba(255,255,255,0.35);font-size:13px;margin-top:1rem;cursor:pointer;text-decoration:underline">Skip for now &mdash; my adviser can collect these</button>
+</div>
+
+<!-- S23 Add-ons -->
+<div class="scr" id="s23">
+  <div class="ql">Section 5 of 5 &mdash; Optional add-ons</div>
+  <h2 class="qt">Would you like any of these?</h2>
+  <p class="qs">Select all that apply. Pricing is based on your vehicle &mdash; our team will contact you with options.</p>
+  <div class="agrid">
+    <div class="ac" onclick="togAddon(this,'GAP Insurance')"><div class="an">GAP Insurance</div><div style="font-size:11px;color:rgba(255,255,255,0.4);margin-bottom:4px">Priced based on your vehicle</div><div class="as">Covers the shortfall if your vehicle is written off and insurance does not cover the full loan balance.</div></div>
+    <div class="ac" onclick="togAddon(this,'Payment Protection')"><div class="an">Payment Protection</div><div style="font-size:11px;color:rgba(255,255,255,0.4);margin-bottom:4px">Priced based on your vehicle</div><div class="as">Covers your repayments if you cannot work due to illness, injury, or redundancy.</div></div>
+    <div class="ac" onclick="togAddon(this,'Mechanical Breakdown')"><div class="an">Mechanical Breakdown</div><div style="font-size:11px;color:rgba(255,255,255,0.4);margin-bottom:4px">Priced based on your vehicle</div><div class="as">Covers unexpected mechanical or electrical failures. Varies by vehicle age and model.</div></div>
+    <div class="ac" onclick="togAddon(this,'Comprehensive Insurance')"><div class="an">Comprehensive Insurance</div><div style="font-size:11px;color:rgba(255,255,255,0.4);margin-bottom:4px">Priced based on your vehicle</div><div class="as">Required for all financed vehicles. Lender must be noted as an interested party on your policy.</div></div>
+  </div>
+  <p style="font-size:11px;color:rgba(255,255,255,0.28);max-width:520px;line-height:1.7;margin-bottom:1.5rem">Pricing for all add-ons is determined by the make, model, year and condition of your vehicle. A Launch Finance adviser will contact you with full pricing before any agreement is signed.</p>
+  <div class="br"><button class="bs" onclick="goTo(22)">&#8592; Back</button><button class="bp" onclick="goTo(24)">See my estimate &#8594;</button></div>
+</div>
+
+<!-- S24 Results -->
+<div class="scr" id="s24">
+  <div class="badge">Your indicative estimate</div>
+  <h2 class="qt" id="rGreet">Here is your finance summary</h2>
+  <div class="mh" id="rAmount">$0</div>
+  <div class="ml" id="rFreqLbl">estimated monthly repayment (excl. add-ons)*</div>
+  <div id="rAddonNote" style="display:none;background:rgba(0,229,160,0.1);border:1px solid rgba(0,229,160,0.25);border-radius:8px;padding:6px 16px;font-size:13px;color:#00e5a0;margin-bottom:1rem"></div>
+  <p style="font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:0.75rem">Tap any card to edit that answer</p>
+  <div class="rgrid" id="rGrid"></div>
+  <div class="tcb"><strong style="color:rgba(255,255,255,0.5)">Indicative estimate only.</strong> Uses an example rate of 14.95% p.a. Excludes establishment fees, PPSR charges and account fees. Final repayment may be higher. A Launch Finance adviser will provide a full accurate quote before any agreement is signed. Rates from 8.45% to 29.95% p.a.</div>
+  <div style="max-width:560px;width:100%;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:1rem 1.25rem;margin:1rem 0;text-align:left">
+    <label style="display:flex;align-items:flex-start;gap:12px;cursor:pointer">
+      <input type="checkbox" id="consent" style="margin-top:3px;accent-color:#00e5a0;width:16px;height:16px;flex-shrink:0">
+      <span style="font-size:12px;color:rgba(255,255,255,0.55);line-height:1.7">I authorise Launch Finance Brokers to collect, use and disclose my personal information to assess this application, including sharing with third-party lenders, in accordance with the NZ Privacy Act 2020. I confirm all information provided is true and correct.</span>
+    </label>
+    <div style="font-size:11px;color:rgba(255,255,255,0.3);margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.07);line-height:1.7">Right to cancel: Once you enter into a loan agreement you have the right to cancel within 5 to 9 working days under the CCCFA by giving written notice to the lender.</div>
+  </div>
+  <div style="max-width:560px;width:100%">
+    <button class="bp" style="width:100%;justify-content:center;font-size:1rem;padding:1rem" onclick="doSubmit()">Submit application &#8594;</button>
+  </div>
+  <button class="bs" style="margin-top:0.75rem" onclick="goTo(0)">Start again</button>
+</div>
+
+<!-- S25 Confirmed -->
+<div class="scr" id="s25">
+  <div style="font-size:56px;margin-bottom:1rem">&#9989;</div>
+  <h2 class="qt">Application submitted!</h2>
+  <p class="qs">Thanks <span id="confName"></span>! We have received your application and a Launch Finance adviser will be in touch within 2 business hours.</p>
+  <div style="background:rgba(0,229,160,0.07);border:1px solid rgba(0,229,160,0.2);border-radius:12px;padding:1rem 1.5rem;max-width:400px;margin:1.5rem 0;font-size:13px;color:rgba(255,255,255,0.6);line-height:1.7">
+    Call us on <strong style="color:#fff">021 300 279</strong><br>
+    Email <strong style="color:#fff">info@launchedfinance.co.nz</strong>
+  </div>
+  <button class="bp" onclick="goTo(0)">Back to home</button>
+</div>
+
+<script>
+var D = {price:25000, deposit:5000, income:65000, expenses:2000};
+var addons = [];
+var TOTAL = 24;
+
+function goTo(n) {
+  var all = document.querySelectorAll('.scr');
+  for (var i = 0; i < all.length; i++) all[i].classList.remove('on');
+  var el = document.getElementById('s' + n);
+  if (!el) return;
+  el.classList.add('on');
+  var pct = n === 0 ? 0 : Math.round((n / TOTAL) * 100);
+  document.getElementById('pf').style.width = Math.min(pct, 100) + '%';
+  document.getElementById('pt').textContent = n === 0 ? '' : (n >= 24 ? 'Complete' : 'Step ' + n + ' of ' + TOTAL);
+  window.scrollTo(0, 0);
+  if (n === 24) buildResults();
+}
+
+function pick(key, val, el, groupId) {
+  var grp = groupId ? document.getElementById(groupId) : el.closest('.choices,.cards,.dep-row');
+  if (grp) {
+    var items = grp.querySelectorAll('.ch,.card');
+    for (var i = 0; i < items.length; i++) items[i].classList.remove('on');
+  }
+  el.classList.add('on');
+  D[key] = val;
+}
+
+function req(from, to, key) {
+  if (!D[key]) { shake(from); return; }
+  goTo(to);
+}
+
+function shake(n) {
+  var el = document.getElementById('s' + n);
+  el.style.transform = 'translateX(-8px)';
+  setTimeout(function() { el.style.transform = 'translateX(8px)'; }, 80);
+  setTimeout(function() { el.style.transform = 'translateX(0)'; }, 160);
+}
+
+function slUpd(type) {
+  if (type === 'price') {
+    D.price = +document.getElementById('priceSlider').value;
+    document.getElementById('priceVal').textContent = '$' + D.price.toLocaleString();
+  } else if (type === 'income') {
+    D.income = +document.getElementById('incomeSlider').value;
+    document.getElementById('incomeVal').textContent = '$' + D.income.toLocaleString();
+  } else if (type === 'exp') {
+    D.expenses = +document.getElementById('expSlider').value;
+    document.getElementById('expVal').textContent = '$' + D.expenses.toLocaleString() + ' / mo';
+  }
+}
+
+function depSlid() {
+  var v = +document.getElementById('depSlider').value;
+  D.deposit = v;
+  document.getElementById('depInput').value = v;
+}
+
+function depTyped() {
+  var v = Math.max(0, +document.getElementById('depInput').value || 0);
+  D.deposit = v;
+  document.getElementById('depSlider').value = Math.min(v, 30000);
+}
+
+function saveDep() {
+  D.deposit = Math.max(0, +document.getElementById('depInput').value || 0);
+  goTo(5);
+}
+
+function saveName() {
+  var f = document.getElementById('fFirst').value.trim();
+  var l = document.getElementById('fLast').value.trim();
+  if (!f || !l) { shake(7); return; }
+  D.firstName = f;
+  D.lastName = l;
+  D.title = document.getElementById('ftitle').value;
+  goTo(8);
+}
+
+function saveInp(from, to, id) {
+  var v = document.getElementById(id).value.trim();
+  if (!v) { shake(from); return; }
+  D[id] = v;
+  goTo(to);
+}
+
+function saveAddr() {
+  var s = document.getElementById('fStreet').value.trim();
+  var c = document.getElementById('fCity').value.trim();
+  if (!s || !c) { shake(11); return; }
+  D.address = s + (document.getElementById('fSuburb').value.trim() ? ', ' + document.getElementById('fSuburb').value.trim() : '') + ', ' + c;
+  goTo(12);
+}
+
+function fileUp(inpId, lblId, tickId) {
+  var file = document.getElementById(inpId).files[0];
+  if (!file) return;
+  var name = file.name.length > 28 ? file.name.substring(0, 26) + '...' : file.name;
+  document.getElementById(lblId).textContent = name;
+  document.getElementById(inpId).closest('.ubox').classList.add('done');
+  document.getElementById(tickId).style.display = 'flex';
+}
+
+function togAddon(el, name) {
+  el.classList.toggle('on');
+  var idx = addons.indexOf(name);
+  if (idx > -1) addons.splice(idx, 1); else addons.push(name);
+}
+
+function calcPay() {
+  var p = Math.max(0, (D.price || 25000) - (D.deposit || 0));
+  var m = parseInt(D.loanTerm || '36');
+  var r = 0.1495 / 12;
+  if (p === 0) return 0;
+  return Math.round(p * r * Math.pow(1 + r, m) / (Math.pow(1 + r, m) - 1));
+}
+
+function buildResults() {
+  var mo = calcPay();
+  var freq = D.repayFreq || 'Monthly';
+  var disp = mo, lbl = 'monthly';
+  if (freq === 'Fortnightly') { disp = Math.round(mo * 12 / 26); lbl = 'fortnightly'; }
+  if (freq === 'Weekly') { disp = Math.round(mo * 12 / 52); lbl = 'weekly'; }
+  document.getElementById('rAmount').textContent = '$' + disp.toLocaleString();
+  document.getElementById('rFreqLbl').textContent = 'estimated ' + lbl + ' repayment (excl. add-ons)*';
+  if (D.firstName) document.getElementById('rGreet').textContent = 'Great news, ' + D.firstName + '!';
+  var note = document.getElementById('rAddonNote');
+  if (addons.length > 0) {
+    note.style.display = 'block';
+    note.textContent = addons.length + ' add-on' + (addons.length > 1 ? 's' : '') + ' selected - our team will contact you with pricing';
+  } else {
+    note.style.display = 'none';
+  }
+  var pr = D.price || 25000;
+  var dp = D.deposit || 0;
+  var editMap = {'Vehicle type':1,'Purchase price':3,'Deposit':4,'Loan amount':4,'Loan term':5,'Repayments':6,'Relationship':12,'Dependants':12,'Employment':14,'Annual income':17,'Monthly expenses':18,'Add-ons':23};
+  var rows = [
+    ['Vehicle type', D.vehicleType || 'Not set'],
+    ['Purchase price', '$' + pr.toLocaleString()],
+    ['Deposit', '$' + dp.toLocaleString()],
+    ['Loan amount', '$' + Math.max(0, pr - dp).toLocaleString()],
+    ['Loan term', D.loanTerm || 'Not set'],
+    ['Repayments', D.repayFreq || 'Not set'],
+    ['Relationship', D.relStatus || 'Not set'],
+    ['Dependants', D.dependants || 'Not set'],
+    ['Employment', D.employ || 'Not set'],
+    ['Annual income', D.income ? '$' + (+D.income).toLocaleString() : 'Not set'],
+    ['Monthly expenses', D.expenses ? '$' + (+D.expenses).toLocaleString() : 'Not set'],
+    ['Add-ons', addons.length ? addons.join(', ') : 'None selected']
+  ];
+  var html = '';
+  for (var i = 0; i < rows.length; i++) {
+    var lk = rows[i][0];
+    var sc = editMap[lk] || 1;
+    html += '<div class="rc" onclick="goTo(' + sc + ')" title="Tap to edit">';
+    html += '<div class="re">edit</div>';
+    html += '<div class="rl">' + lk + '</div>';
+    html += '<div class="rv">' + rows[i][1] + '</div>';
+    html += '</div>';
+  }
+  document.getElementById('rGrid').innerHTML = html;
+}
+
+function doSubmit() {
+  if (!document.getElementById('consent').checked) {
+    document.getElementById('consent').closest('label').style.color = '#ff6b6b';
+    setTimeout(function() { document.getElementById('consent').closest('label').style.color = ''; }, 2500);
+    return;
+  }
+  if (D.firstName) document.getElementById('confName').textContent = D.firstName;
+  goTo(25);
+}
+
+var faqs = [
+  ['How do I apply?', 'Complete our 5-minute online application. A Launch Finance adviser will contact you within 2 business hours with options tailored to your situation.'],
+  ['What rates are available?', 'Rates start from 8.45% p.a. Your rate depends on your credit profile, loan amount, and term. We will always disclose your rate before you sign anything.'],
+  ['Can I get finance with no deposit?', 'Yes. Enter $0 as your deposit in the application. No deposit options are available subject to responsible lending criteria.'],
+  ['Can I get finance with bad credit?', 'Yes. We consider all credit situations including defaults, arrears, and previous credit issues. We work with lenders who specialise in these circumstances.'],
+  ['How long does approval take?', 'We aim to have a decision within 2 business hours of receiving your completed application during business hours.'],
+  ['Can I buy from a private seller or Trade Me?', 'Yes. We can finance vehicles from dealers, private sellers, auctions, and Trade Me. Additional documents may be required for private sales.'],
+  ['How much can I borrow?', 'You can apply to borrow between $1,000 and $75,000 subject to responsible lending criteria.'],
+  ['What documents will I need?', 'Typically your NZ drivers licence, recent payslips, proof of address, and vehicle details. Your adviser will confirm exactly what is needed.'],
+  ['Is my information secure?', 'Yes. Your data is encrypted and handled in accordance with the New Zealand Privacy Act 2020.'],
+  ['What fees apply?', 'An establishment fee and other lender fees may apply. All fees will be fully disclosed before you enter into any agreement as required under the CCCFA.']
+];
+
+var tcs = [
+  ['Lending criteria', 'All finance is subject to responsible lending assessment under the CCCFA and the Responsible Lending Code (revised July 2024). Launch Finance Brokers and its lender partners reserve the right to decline applications.'],
+  ['Interest rates', 'Rates from 8.45% to 29.95% p.a. fixed. Your actual rate is determined by your credit profile, loan amount, loan term, and lending criteria of the approved lender. Rates will be confirmed in writing before you sign any agreement.'],
+  ['Fees and charges', 'An establishment fee, PPSR registration fee, and monthly account fee may apply. Early repayment fees may apply with some lenders. All fees will be disclosed in full in your loan disclosure statement before any agreement is signed.'],
+  ['Right to cancel', 'Once you enter into a loan agreement, you have the right to cancel within 5 working days of receiving the disclosure statement, or 9 working days if disclosure is posted. To cancel, provide written notice to the lender.'],
+  ['Affordability and suitability', 'Under the CCCFA and Responsible Lending Code (July 2024), lenders must make reasonable inquiries to be satisfied that any loan is suitable and affordable, meaning you can make repayments without suffering substantial hardship.'],
+  ['Broker disclosure', 'Launch Finance Brokers is a credit broker, not a lender. We introduce customers to third-party lenders and may receive a commission. This does not affect the interest rate or terms offered to you.'],
+  ['Not financial advice', 'Recommendations made by Launch Finance Brokers about consumer loans or credit-related insurance are not regulated financial advice under the Financial Markets Conduct Act 2013.'],
+  ['Privacy and data', 'Personal information is collected for the purpose of assessing your finance application under the CCCFA and handled in accordance with the NZ Privacy Act 2020. You have the right to access or correct your information at any time.'],
+  ['Hardship', 'If your financial circumstances change and you cannot meet repayments, you have the right to apply to your lender for a hardship variation under the CCCFA. Contact your lender as early as possible.'],
+  ['Complaints', 'Contact us first at info@launchedfinance.co.nz or 021 300 279. If unresolved, refer to the IFSO Scheme, a free independent dispute resolution service. Phone: 0800 888 202.'],
+  ['Vehicle insurance', 'All financed vehicles must be covered by comprehensive motor vehicle insurance for the full loan term. The lender must be noted as an interested party on your policy.'],
+  ['Indicative estimates', 'Repayment estimates shown during the application process are based on an example rate and do not constitute a quote, pre-approval, or offer of finance.']
+];
+
+function buildAcc(items, id) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  var html = '';
+  for (var i = 0; i < items.length; i++) {
+    html += '<div class="ai">';
+    html += '<button class="ab" onclick="togAcc(\'' + id + '_' + i + '\')">';
+    html += '<span class="at">' + items[i][0] + '</span>';
+    html += '<span class="aico" id="' + id + '_' + i + '_ico">+</span>';
+    html += '</button>';
+    html += '<div class="ad" id="' + id + '_' + i + '">' + items[i][1] + '</div>';
+    html += '</div>';
+  }
+  el.innerHTML = html;
+}
+
+function togAcc(id) {
+  var el = document.getElementById(id);
+  var ico = document.getElementById(id + '_ico');
+  var open = el.style.display === 'block';
+  el.style.display = open ? 'none' : 'block';
+  ico.textContent = open ? '+' : '-';
+}
+
+buildAcc(faqs, 'faqList');
+buildAcc(tcs, 'tcList');
+goTo(0);
+
+</script>
+</body>
+</html>
