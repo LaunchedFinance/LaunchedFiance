@@ -770,12 +770,38 @@ function doSubmit() {
     setTimeout(function() { document.getElementById('consent').closest('label').style.color = ''; }, 2500);
     return;
   }
-  if (D.firstName) document.getElementById('confName').textContent = D.firstName;
-  goTo(25);
+
+  // Prepare data to send
+  const applicationData = {
+    ...D,
+    addons: addons
+  };
+
+  // Send to API
+  fetch('/api/send-email', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ data: applicationData }),
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.error) {
+      alert('Error submitting application: ' + data.error);
+      return;
+    }
+    if (D.firstName) document.getElementById('confName').textContent = D.firstName;
+    goTo(25);
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    alert('Error submitting application. Please try again.');
+  });
 }
 
 var faqs = [
-  ['How do I apply?', 'Complete our 5-minute online application. A Launch Finance adviser will contact you within 2 business hours with options tailored to your situation.'],
+  ['How do I apply?', 'Complete our 5-minute online application. A Launched Finance adviser will contact you within 2 business hours with options tailored to your situation.'],
   ['What rates are available?', 'Rates start from 8.45% p.a. Your rate depends on your credit profile, loan amount, and term. We will always disclose your rate before you sign anything.'],
   ['Can I get finance with no deposit?', 'Yes. Enter $0 as your deposit in the application. No deposit options are available subject to responsible lending criteria.'],
   ['Can I get finance with bad credit?', 'Yes. We consider all credit situations including defaults, arrears, and previous credit issues. We work with lenders who specialise in these circumstances.'],
