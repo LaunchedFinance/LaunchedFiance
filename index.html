@@ -33,7 +33,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .ch.on .ck{background:#00e5a0;border-color:#00e5a0;color:#0a0f1e}
 .sw{width:100%;max-width:500px;margin-bottom:2rem}
 .sv{font-size:2.5rem;font-weight:800;color:#00e5a0;margin-bottom:1rem;letter-spacing:-0.03em}
-input[type=range]{-webkit-appearance:none;width:100%;height:4px;background:rgba(255,255,255,0.15);border-radius:2px;outline:none}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:4px;background:rgba(255,255,255,0.15);border-radius:2px;outline:none}
 input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:#00e5a0;cursor:pointer;border:3px solid #0a0f1e;box-shadow:0 0 0 2px #00e5a0}
 .sr{display:flex;justify-content:space-between;font-size:12px;color:rgba(255,255,255,0.35);margin-top:8px}
 .fi{width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:1rem 1.25rem;font-size:1.1rem;color:#fff;outline:none;transition:border-color 0.2s;font-family:inherit}
@@ -325,7 +325,7 @@ select.fi option{background:#0a0f1e}
   <div class="ql">Section 2 of 5 &mdash; Personal details</div>
   <h2 class="qt">What is your email address?</h2>
   <div class="iw"><input class="fi" id="fEmail" placeholder="you@example.com" type="email"></div>
-  <div class="br"><button class="bs" onclick="goTo(😎">&#8592; Back</button><button class="bp" onclick="saveInp(9,10,'fEmail')">Continue &#8594;</button></div>
+  <div class="br"><button class="bs" onclick="goTo(8)">&#8592; Back</button><button class="bp" onclick="saveInp(9,10,'fEmail')">Continue &#8594;</button></div>
 </div>
 
 <!-- S10 Mobile -->
@@ -561,7 +561,7 @@ select.fi option{background:#0a0f1e}
     <div class="ac" onclick="togAddon(this,'Mechanical Breakdown')"><div class="an">Mechanical Breakdown</div><div style="font-size:11px;color:rgba(255,255,255,0.4);margin-bottom:4px">Priced based on your vehicle</div><div class="as">Covers unexpected mechanical or electrical failures. Varies by vehicle age and model.</div></div>
     <div class="ac" onclick="togAddon(this,'Comprehensive Insurance')"><div class="an">Comprehensive Insurance</div><div style="font-size:11px;color:rgba(255,255,255,0.4);margin-bottom:4px">Priced based on your vehicle</div><div class="as">Required for all financed vehicles. Lender must be noted as an interested party on your policy.</div></div>
   </div>
-  <p style="font-size:11px;color:rgba(255,255,255,0.28);max-width:520px;line-height:1.7;margin-bottom:1.5rem">Pricing for all add-ons is determined by the make, model, year and condition of your vehicle. A Launch Finance adviser will contact you with full pricing before any agreement is signed.</p>
+  <p style="font-size:11px;color:rgba(255,255,255,0.28);max-width:520px;line-height:1.7;margin-bottom:1.5rem">Pricing for all add-ons is determined by the make, model, year and condition of your vehicle. A Launched Finance adviser will contact you with full pricing before any agreement is signed.</p>
   <div class="br"><button class="bs" onclick="goTo(22)">&#8592; Back</button><button class="bp" onclick="goTo(24)">See my estimate &#8594;</button></div>
 </div>
 
@@ -574,7 +574,7 @@ select.fi option{background:#0a0f1e}
   <div id="rAddonNote" style="display:none;background:rgba(0,229,160,0.1);border:1px solid rgba(0,229,160,0.25);border-radius:8px;padding:6px 16px;font-size:13px;color:#00e5a0;margin-bottom:1rem"></div>
   <p style="font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:0.75rem">Tap any card to edit that answer</p>
   <div class="rgrid" id="rGrid"></div>
-  <div class="tcb"><strong style="color:rgba(255,255,255,0.5)">Indicative estimate only.</strong> Uses an example rate of 14.95% p.a. Excludes establishment fees, PPSR charges and account fees. Final repayment may be higher. A Launch Finance adviser will provide a full accurate quote before any agreement is signed. Rates from 8.45% to 29.95% p.a.</div>
+  <div class="tcb"><strong style="color:rgba(255,255,255,0.5)">Indicative estimate only.</strong> Uses an example rate of 14.95% p.a. Excludes establishment fees, PPSR charges and account fees. Final repayment may be higher. A Launched Finance adviser will provide a full accurate quote before any agreement is signed. Rates from 8.45% to 29.95% p.a.</div>
   <div style="max-width:560px;width:100%;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:1rem 1.25rem;margin:1rem 0;text-align:left">
     <label style="display:flex;align-items:flex-start;gap:12px;cursor:pointer">
       <input type="checkbox" id="consent" style="margin-top:3px;accent-color:#00e5a0;width:16px;height:16px;flex-shrink:0">
@@ -592,7 +592,7 @@ select.fi option{background:#0a0f1e}
 <div class="scr" id="s25">
   <div style="font-size:56px;margin-bottom:1rem">&#9989;</div>
   <h2 class="qt">Application submitted!</h2>
-  <p class="qs">Thanks <span id="confName"></span>! We have received your application and a Launch Finance adviser will be in touch within 2 business hours.</p>
+  <p class="qs">Thanks <span id="confName"></span>! We have received your application and a Launched Finance adviser will be in touch within 2 business hours.</p>
   <div style="background:rgba(0,229,160,0.07);border:1px solid rgba(0,229,160,0.2);border-radius:12px;padding:1rem 1.5rem;max-width:400px;margin:1.5rem 0;font-size:13px;color:rgba(255,255,255,0.6);line-height:1.7">
     Call us on <strong style="color:#fff">021 300 279</strong><br>
     Email <strong style="color:#fff">info@launchedfinance.co.nz</strong>
