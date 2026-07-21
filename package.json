@@ -9,10 +9,14 @@
     "start": "npx serve ."
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "resend": "latest"
   },
-  "devDependencies": {},
-  "keywords": ["finance", "vehicle", "application"],
+  "keywords": [
+    "finance",
+    "vehicle",
+    "application"
+  ],
   "author": "Launched Finance",
   "license": "ISC"
 }
